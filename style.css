@@ -1,0 +1,141 @@
+/* Jest font link */
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;1,300&display=swap');
+
+*
+*::before,
+*::after{
+      margin: 0;
+      padding: 0%;
+      box-sizing: border-box;
+}
+
+html{
+      font-size: 62.5%;
+      font-family: "Jost",sans-serif;
+}
+body{
+      
+}
+.main_div{
+      width: 100vw;
+      height: 100vh;
+      background-color: #f6f6f6;
+      display: grid;
+      place-items: center;
+      background: rgb(18,36,0);
+background: linear-gradient(90deg, rgba(18,36,0,1) 0%, rgba(168,184,58,1) 0%, rgba(221,58,32,1) 100%);
+}
+
+.music_container{
+      width: 350px;
+      height: 550px;
+      background-color: #ffffff;
+      border-radius: 2rem;
+      box-shadow: 0 1.2rem 4rem 0.5rem rgba(0,0,0,0.2);
+      padding: 3rem;
+      text-align: center;
+    
+      /* margin: 0 auto; */
+}
+.blink-soft {
+      animation: blinker 1.5s linear infinite;
+
+    }
+
+    @keyframes blinker {
+      50% {
+        opacity: 0;
+      }
+    }
+
+.music_container #title{
+      text-transform: uppercase;
+      letter-spacing: 0.2;
+      word-spacing: 0.5rem;
+      color: #171717;
+      margin: 1rem 0 0.5rem 0;
+      font-size: 2.5rem;
+      font-weight: 500;
+      text-shadow: 0 0.3rem 0.5rem rgba(0,0,0,0.3);
+}
+
+.img-container{
+      width: 25rem;
+      height: 25rem;
+      margin: auto;
+      box-shadow: 0 1.2rem 3rem 0.5rem rgba(0,0,0,0,4);
+}
+
+img{
+      /* Make the img object fit and circle */
+      width: 80%;
+      height: 80%;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 1.2rem 3rem 0.5rem rgba(0,0,0,0,4);
+}
+
+audio{
+      margin-top: 2rem;
+}
+.music_controls{
+      width: 10rem;
+      display: flex;
+      justify-content: space-between;
+      margin: auto;
+      margin-top: 2rem;
+     
+}
+
+.music_controls ion-icon{
+      color: #111111;
+      font-size: 2rem;
+      cursor: pointer;
+      filter: drop-shadow(0 1.2rem 3rem 0.5rem rgba(0,0,0,0.4));
+      transition: 0.2s;
+}
+
+/* .music_controls .main_button{
+      width: 3rem;
+      background-color: #111;
+      height: 3rem;
+      border-radius: 50%;
+      color: #f6f6f6;
+      font-size: 0.1rem;
+      /* Add display flex to center the icons */
+      /* display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0.4rem; */
+/* } */ 
+
+.music_controls .main_button{
+      background-color: #111111;
+      border-radius: 50%;
+      color: #f6f6f6;
+      padding: 0.32rem;
+}
+
+.music_controls .main_button:hover{
+      background-color: #f6f6f6;
+      color:#111111 ;
+      box-shadow: 0 1rem 2rem 0.2rem rgba(0.0,0,0.4);
+}
+
+.music_controls .btn:hover{
+      color: grey;
+      transform: 0.3s;
+}
+
+/* Add anime class to animate */
+.anime{
+      animation: rotatePlayer 3s linear infinite;
+}
+
+@keyframes rotatePlayer{
+      from{transform: rotate(0deg);
+      }
+      to{
+            transform: rotate(360deg);
+      }
+}

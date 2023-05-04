@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Fontawesome -->
+      <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+      <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+      <!-- favicon -->
+      <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
+      <!-- Individual css -->
+      <link rel="stylesheet" href="style.css">
+      <title>Vivek's Music</title>
+</head>
+<body>
+      <div class="main_div">
+            <div class="music_container">
+                  <h2 class="blink-soft">Vivek's Music</h2>
+                  <h2 id="title">Faded</h2>
+                  <h3 id="artist">Alan Walkaer </h3>
+                  <div class="img_container">
+                      <img src="./images/Faded.jpg" alt="" >  
+                  </div>
+
+                  <audio src="./music/Faded.mp3" controls></audio>
+
+                  <!-- Controls -->
+                  <div class="music_controls">
+                        <ion-icon name="play-back-outline" title="Previous" class="btn" id="prev"></ion-icon>
+                        <ion-icon name="play-outline" title="play" class="main_button" id="play"></ion-icon>
+                        <ion-icon name="play-forward-outline" title="Next" id="next" class="btn"></ion-icon>
+                  </div>
+
+            </div>
+      </div>
+
+      
+      <script>
+            const music = document.querySelector('audio');
+            const img = document.querySelector("img");
+           const play = document.getElementById('play') ;
+           const music_container = document.getElementsByClassName("music_container");
+           const artist = document.getElementById("artist");
+           const title = document.getElementById("title");
+           const prev = document.getElementById("prev");
+           const next = document.getElementById("next");
+
+           const songs = [{
+            name:"Faded",
+            title:"Faded",
+            artist:"Alan Walkaer"
+           },
+           {
+            name:"Shut-Up",
+            title:"Shut-Up",
+            artist:"Alan Walkaer"
+           },
+           {
+            name:"Lovesick",
+            title:"Lovesick",
+            artist:"Alan Walkaer"
+           }]
+
+           let isPlaying = false;
+
+           //for play function
+           const playMusic = ()=>{
+            isPlaying = true;
+            music.play();
+            play.setAttribute("name","pause-outline");
+            img.classList.add("anime");
+            music_container.style["background-color"] = "#000000";
+            
+           };
+
+           //for pause function
+           const pauseMusic = () =>{
+            isPlaying = false;
+            music.pause();
+            play.setAttribute("name","play-outline");
+            img.classList.remove("anime");
+
+           };
+
+           play.addEventListener('click',()=>{
+            // if(isPlaying){
+            //       pauseMusic();
+            // }
+            // else{
+            //       playMusic();
+            // }
+            isPlaying ? pauseMusic() : playMusic();
+           });
+
+
+           //Changing music
+           const loadSong = (songs) =>{
+            title.textContent = songs.title;
+            artist.textContent = songs.artist;
+            music.src = "/music/"+ songs.name + ".mp3";
+            img.src = "images/"+ songs.name +".jpg";
+           };
+           songIndex = 0;
+      //      loadSong(songs[2]);
+
+           const nextSong = () =>{
+                 songIndex = (songIndex +1) % songs.length;
+                 loadSong(songs[songIndex]);
+                 playMusic();
+           };
+           const prevSong = () =>{
+                 songIndex = (songIndex - 1 + songs.length) % songs.length;
+                 loadSong(songs[songIndex]);
+                 playMusic();
+           };
+           next.addEventListener('click',nextSong);
+           prev.addEventListener('click',prevSong);
+      </script>
+</body>
+</html>
